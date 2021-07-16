@@ -14,7 +14,7 @@ const App = () => {
         <main className="content-area">
           <h1>Content Area</h1>
         </main>
-        <section className="email-modal">
+        <section className="email-modal email-modal--visible">
           <div className="email-modal__close-btn">
             <i className="gg-close" />
           </div>
@@ -38,7 +38,7 @@ const App = () => {
               <div className="email-modal__decline-offer">Sorry, I'm not interested</div>
             </div>
             <div className="email-modal__side-img">
-              <img src="img/pexels-photo-4462782.jpeg" />
+              <img src="img/shoe.jpeg" />
             </div>
             <div className="email-thank">
               <div className="email-thank__title">
