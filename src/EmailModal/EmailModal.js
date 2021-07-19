@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useStateContext } from './EMProvider';
 
 const EmailModal = () => {
     const newState = useStateContext();
+    useEffect(() => {
+        document.body.addEventListener('mouseleave', () => {
+            newState.openModalAction()
+        })
+    }, [])
     console.log(newState)
     return (
         <section className={`email-modal ${newState.openModal ? "email-modal--visible" : ""}`}>
