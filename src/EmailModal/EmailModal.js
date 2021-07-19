@@ -1,16 +1,23 @@
 import React, {useEffect} from 'react';
 import { useStateContext } from './EMProvider';
+import Cookies from 'js-cookie';
 
 const EmailModal = () => {
     const newState = useStateContext();
+
     useEffect(() => {
         document.body.addEventListener('mouseleave', () => {
+            // if(Cookies.get('modalOpenedBefore') !== 'true') {
+                
+            //     newState.openModalAction()
+            // }
             newState.openModalAction()
         })
     }, [])
+
     console.log(newState)
     return (
-        <section className={`email-modal ${newState.openModal ? "email-modal--visible" : ""}`}>
+        <section className={`email-modal ${newState.modalOpen ? "email-modal--visible" : ""}`}>
           <div className="email-modal__close-btn" onClick={newState.closeModalAction}>
             <i className="gg-close" />
           </div>
@@ -31,7 +38,7 @@ const EmailModal = () => {
                 <input type="email" className="email-modal__input" placeholder="youremail@mail.com" />
                 <button className="email-modal__button">Send</button>
               </div>
-              <div className="email-modal__decline-offer">Sorry, I'm not interested</div>
+              <div className="email-modal__decline-offer" onClick={newState.closeModalAction}>Sorry, I'm not interested</div>
             </div>
             <div className="email-modal__side-img">
               <img src="img/shoe.jpeg" />
