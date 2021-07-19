@@ -35,7 +35,7 @@ const EmailModal = () => {
                 Sorry this is not a valid email
               </div>
               <div className="email-modal__form-group">
-                <input type="email" className="email-modal__input" placeholder="youremail@mail.com" />
+                <input type="email" className="email-modal__input" placeholder="youremail@mail.com" value={newState.email} onChange={newState.handleEmailInput} />
                 <button className="email-modal__button">Send</button>
               </div>
               <div className="email-modal__decline-offer" onClick={newState.closeModalAction}>Sorry, I'm not interested</div>

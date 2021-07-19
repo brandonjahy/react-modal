@@ -9,29 +9,21 @@ export function useStateContext(){
 }
 
 export function EMProvider({children}){
+    const [modalOpen, setModalOpen] = useState(false)
     const openModalAction = () => {
         Cookies.set('modalOpenedBefore', true, {expires: 7})
-        setNewState({
-            ...newState,
-            modalOpen: true
-        })
-    }
+        setModalOpen(true)
+    };
     const closeModalAction = () => {
-        setNewState({
-            ...newState,
-            modalOpen: false
-        })
-    }
-    const [newState, setNewState] = useState({
-        modalOpen: false,
-        openModalAction,
-        closeModalAction,
-
-    })
-
+        setModalOpen(false)
+    };
+    const [email, setEmail] = useState('')
+    const handleEmailInput = (e) => {
+        setEmail(e.target.value)
+    };
     return(
-        <StateContext.Provider value={newState}>
+        <StateContext.Provider value={{modalOpen, email, handleEmailInput, openModalAction, closeModalAction}}>
             {children}
         </StateContext.Provider>
-    )
+    );
 }
