@@ -11,7 +11,7 @@ const EmailModal = () => {
     console.log(newState)
     return (
         <section className={`email-modal ${newState.openModal ? "email-modal--visible" : ""}`}>
-          <div className="email-modal__close-btn">
+          <div className="email-modal__close-btn" onClick={newState.closeModalAction}>
             <i className="gg-close" />
           </div>
           <div className="email-modal__container">

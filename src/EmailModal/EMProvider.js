@@ -14,10 +14,17 @@ export function EMProvider({children}){
             openModal: true
         })
     }
+    const closeModalAction = () => {
+        setNewState({
+            ...newState,
+            openModal: false
+        })
+    }
     const [newState, setNewState] = useState({
         openModal: false,
         openModalAction,
-        
+        closeModalAction,
+
     })
 
     return(
