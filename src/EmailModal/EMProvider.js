@@ -21,8 +21,31 @@ export function EMProvider({children}){
     const handleEmailInput = (e) => {
         setEmail(e.target.value)
     };
+    const [showEmailError, setShowEmailError] = useState(false)
+    const checkForEmail = () => {
+        function emailIsValid(text) {
+            return /\S+@\S+\.\S+/.test(text)
+        }
+        if(!emailIsValid(email)){
+            setShowEmailError(true)
+        }
+        console.log('checking for email!')
+    }
+    const removeErrorMessage = () => {
+        setShowEmailError(false)
+        console.log('removing error message!')
+    }
     return(
-        <StateContext.Provider value={{modalOpen, email, handleEmailInput, openModalAction, closeModalAction}}>
+        <StateContext.Provider value={{
+            modalOpen,
+            email,
+            handleEmailInput,
+            openModalAction,
+            closeModalAction,
+            checkForEmail,
+            showEmailError,
+            removeErrorMessage
+            }}>
             {children}
         </StateContext.Provider>
     );

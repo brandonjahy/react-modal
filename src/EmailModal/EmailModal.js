@@ -31,11 +31,19 @@ const EmailModal = () => {
               </div>
               <h2>Don't miss this chance!</h2>
               <p className="email-modal__message">Join our amazing community of more than <span className="email-modal__highlight-text">300,000 woman</span> who love fashion and receive <span className="email-modal__highlight-text">notifications, discounts, and our award winning newsletter.</span></p>
-              <div className="email-modal__error-message">
+              <div className={`email-modal__error-message ${newState.showEmailError ? 'email-modal__error-message--active': ''}`}>  
                 Sorry this is not a valid email
               </div>
               <div className="email-modal__form-group">
-                <input type="email" className="email-modal__input" placeholder="youremail@mail.com" value={newState.email} onChange={newState.handleEmailInput} />
+                <input 
+                type="email"
+                className="email-modal__input"
+                placeholder="youremail@mail.com"
+                value={newState.email}
+                onChange={newState.handleEmailInput}
+                onBlur={newState.checkForEmail}
+                onFocus={newState.removeErrorMessage}
+                 />
                 <button className="email-modal__button">Send</button>
               </div>
               <div className="email-modal__decline-offer" onClick={newState.closeModalAction}>Sorry, I'm not interested</div>
