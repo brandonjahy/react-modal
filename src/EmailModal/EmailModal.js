@@ -22,7 +22,7 @@ const EmailModal = () => {
             <i className="gg-close" />
           </div>
           <div className="email-modal__container">
-            <div className="email-modal__info">
+            <form className="email-modal__info" onSubmit={newState.submittedForm}>
               <div className="logo">
                 Berry
                 <div className="logo__sub">
@@ -44,14 +44,14 @@ const EmailModal = () => {
                 onBlur={newState.checkForEmail}
                 onFocus={newState.removeErrorMessage}
                  />
-                <button className="email-modal__button">Send</button>
+                <button type='submit' className="email-modal__button">Send</button>
               </div>
               <div className="email-modal__decline-offer" onClick={newState.closeModalAction}>Sorry, I'm not interested</div>
-            </div>
+            </form>
             <div className="email-modal__side-img">
               <img src="img/shoe.jpeg" />
             </div>
-            <div className="email-thank">
+            <div className={`email-thank ${newState.formCompleted ? 'email-thank--success': ''}`}>
               <div className="email-thank__title">
                 Thank You
               </div>

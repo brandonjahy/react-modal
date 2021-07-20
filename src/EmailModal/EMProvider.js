@@ -35,6 +35,13 @@ export function EMProvider({children}){
         setShowEmailError(false)
         console.log('removing error message!')
     }
+    const [formCompleted, setFormCompleted] = useState(false);
+    const submittedForm = (e) => {
+        e.preventDefault()
+        if(showEmailError === false && email.length > 5) {
+            setFormCompleted(true)
+        }
+    }
     return(
         <StateContext.Provider value={{
             modalOpen,
@@ -44,7 +51,9 @@ export function EMProvider({children}){
             closeModalAction,
             checkForEmail,
             showEmailError,
-            removeErrorMessage
+            removeErrorMessage,
+            submittedForm,
+            formCompleted
             }}>
             {children}
         </StateContext.Provider>
