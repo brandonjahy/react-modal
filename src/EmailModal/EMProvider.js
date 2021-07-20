@@ -40,6 +40,9 @@ export function EMProvider({children}){
         e.preventDefault()
         if(showEmailError === false && email.length > 5) {
             setFormCompleted(true)
+            setTimeout(() => {
+                closeModalAction(true)
+            }, 3000);
         }
     }
     return(
